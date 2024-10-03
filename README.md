@@ -1,4 +1,4 @@
-# Preprocessing-is-All-You-Need
+# Preprocessing is All You Need
 ### The repository contains the replication package for the paper "Preprocessing is All You Need: Boosting the Performance of Log Parsers With a General Preprocessing Framework".
 
 ## Introduction
