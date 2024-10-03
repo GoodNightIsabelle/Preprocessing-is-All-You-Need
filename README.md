@@ -15,3 +15,10 @@ The overview of our study is shown in the following graph:
 **Performance Comparison:**
 
 ## Know Your Targets (the variables)
+
+## Replicate the Results
+### Overall Performance
+
+### Performance on Different Complexity Subgroups
+
+### Performance on Different Frequency Subgroups
