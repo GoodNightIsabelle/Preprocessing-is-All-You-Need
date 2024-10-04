@@ -24,6 +24,7 @@ Our work focuses on improving the performance of statistic-based parsers with **
 
 ## Replicate the Results
 Result replication is made easy! 
+
 ### Overall Performance
 Run the following commands to obtain the parsing result and evaluations (GA, PA, FGA, FTA) on all log messages:
 
@@ -32,7 +33,7 @@ cd benchmark/
 ./run_all_full.sh
 ```
 
-To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools. An example of the graphical report:
+To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools in both **our version and the original version**. An example of the graphical report:
 
 ![image](./plots/comparison_full.png?raw=true)
 
@@ -44,7 +45,7 @@ cd benchmark/
 ./run_complexity_full.sh
 ```
 
-Run ``plotting_complexity.py`` to get the graphical report:
+Run ``plotting_complexity.py`` to get the graphical report (results from the original version of the parsers are required):
 
 ![image](./plots/complexity_full_all.png?raw=true)
 
@@ -56,6 +57,6 @@ cd benchmark/
 ./run_frequency_full.sh
 ```
 
-Run ``plotting_frequency.py`` to get the graphical report:
+Run ``plotting_frequency.py`` to get the graphical report (results from the original version of the parsers are required):
 
 ![image](./plots/frequency_full_all.png?raw=true)
