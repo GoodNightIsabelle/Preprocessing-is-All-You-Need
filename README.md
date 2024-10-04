@@ -34,7 +34,7 @@ cd benchmark/
 
 To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools. An example of the graphical report:
 
-![image](./images/comparison_full.png?raw=true)
+![image](./plots/comparison_full.png?raw=true)
 
 ### Performance on Different Complexity Subgroups
 The log messages are divided into three subgroups according to the number of variables in the message: ``#Param=0 (complexity=1)``, ``0<#Param<5 (complexity=2)``, and ``#Param>=5 (complexity=3)``. Run the following commands to obtain the parsing result and evaluations (GA, PA, FGA, FTA) on log messages in different subgroups:
@@ -46,7 +46,7 @@ cd benchmark/
 
 Run ``plotting_complexity.py`` to get the graphical report:
 
-![image](./images/complexity_full_all.png?raw=true)
+![image](./plots/complexity_full_all.png?raw=true)
 
 ### Performance on Different Frequency Subgroups
 We extract the messages with the most frequent 10\% and the least frequent 10\% templates and evaluate the impact brought by our framework. Run the following commands to obtain the parsing result and evaluations (GA, PA, FGA, FTA) on log messages in different subgroups:
@@ -58,4 +58,4 @@ cd benchmark/
 
 Run ``plotting_frequency.py`` to get the graphical report:
 
-![image](./images/frequency_full_all.png?raw=true)
+![image](./plots/frequency_full_all.png?raw=true)
