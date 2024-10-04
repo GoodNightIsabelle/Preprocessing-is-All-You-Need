@@ -1,18 +1,26 @@
 # Preprocessing is All You Need
 ### The repository contains the replication package for the paper "Preprocessing is All You Need: Boosting the Performance of Log Parsers With a General Preprocessing Framework".
 
-## Introduction
-The overview of our study is shown in the following graph:
+## What Are the New Framework Features?
+### More Generalizable Regexes
+| Semantic       | Regex                                                                                                         | Introduction                                                           |
+|----------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| IPv4_port      | r'(/\|)(\d+\.){3}\d+(:\d+)?'                                                                                  | IPv4 addresses (optional: with port).                                  |
+| host_port      | r'([\w-]+\.)+[\w-]+\:\d+'                                                                                     | Domain host names with port.                                           |
+| package_host   | r'([\w-]+\.){2,}[\w-]+(\$[\w-]+)*(\@[\w-]+)?'                                                                 | Package (optional: with port and node)/Domain host names without port. |
+| Mac_address    | r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'                                                                  | MAC addresses.                                                         |
+| IPv6           | r'(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}\|:)\|(([0-9a-fA-F]{1,4}:){1,7}\|:):((:[0-9a-fA-F]{1,4}){1,7}\|:))' | IPv6 addresses.                                                        |
+| path           | r'(/\|)(([\w.-]+\|\<\*\>)/)+([\w.-]+\|\<\*\>)'                                                                | File paths.                                                            |
+| size           | r'\b\d+\.?\d*\s?([KGTMkgtm]?(B\|b)\|([KGTMkgtm]))\b'                                                          | Memory sizes.                                                          |
+| duration       | r'\<?\d+\s?sec'                                                                                               | Time duration.                                                         |
+| block          | r'blk\_\-?\d+'                                                                                                | (System specific) Block identifier.                                    |
+| numerical      | r'\b(\-?\+?\d+\.?\d*)\b\|\b0[Xx][a-fA-F\d]+\b\|\b[a-fA-F\d]{4,}\b'                                            | Numerical values: integers, floats, or hexidecimal.                    |
+| time           | r'\b\d{2}:\d{2}(:\d{2}\|:\d{2},\d+)?\b'                                                                       | Time information.                                                      |
+| date           | r'\b(\d{4}-\d{2}-\d{2})\|\d{4}/\d{2}/\d{2}\b'                                                                 | Date information.                                                      |
+| url            | r'\bhttps?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(:[0-9]{1,5})?(\/[^\s]*)?\b'                             | URL.                                                                   |
+| weekday_months | r'\b(%s)\b' % '\|'.join(weekday_abb+weekday+month_abb+months)                                                 | Weekdays or months (full names or abbreviations).                      |
 
-**Variable Extraction:** Extract the variables in Loghub-2k using the log messages and their corresponding templates. 
 
-**Regular Expression Matching:** We parse the log messages only with the preprocessing regexes provided in Loghub and evaluate what portion of variables can be matched by the regexes.
-
-**Non-matchable Variable Categorization:** We collect the variables that failed to be matched by the regexes and categorize them with their semantics. 
-
-**Preprocessing Framework Development:** Based on the characteristics of the non-matchable variables, we refine the existing regex set and develop a new preprocessing framework.
-
-**Performance Comparison:** We combine the framework with four state-of-the-art statistic-based log parsers and evaluate the performance (GA, PA, FGA, and FTA) before and after deploying the new framework. 
 
 ## Know Your Targets (the variables)
 
@@ -21,6 +29,8 @@ We used the smaller-scale dataset ``Loghub-2k`` for variable extraction and cate
 
 ## Parsing Tools
 Our work focuses on improving the performance of statistic-based parsers with **manageable, interpretable, and generalizable** knowledge provided in the preprocessing stage. According to the Loghub 2.0 results, only four statistic-based log parsers (i.e., Drain, IPLoM, LFA, and LogCluster) can parse all the full-sized log files in 12 hours. Considering the applicability of these four tools in real-life usage, we only evaluated them in our study. The implementation codes are inherited from the Loghub 2.0 repository. 
+
+
 
 ## Replicate the Results
 Result replication is made easy! 
