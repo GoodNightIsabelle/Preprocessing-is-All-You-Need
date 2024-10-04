@@ -2,7 +2,12 @@
 ### The repository contains the replication package for the paper "Preprocessing is All You Need: Boosting the Performance of Log Parsers With a General Preprocessing Framework".
 
 ## What Are the New Framework Features?
-### More Generalizable Regexes
+
+Getting tired of low parsing accuracies? Our log preprocessing framework is here to save your day! Go to ```./benchmark/logparser/utils/preprocessing.py``` to check the implementation details.
+
+### More Regexes
+Our study identified several categories of variables that are not matched by the default Loghub regexes but can be identified using **consistent and generalizable** regexes. Therefore, we enriched the regex set used for log preprocessing. The regexes used in our new framework are introduced in the following table: 
+
 | Semantic       | Regex                                                                                                         | Introduction                                                           |
 |----------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | IPv4_port      | r'(/\|)(\d+\.){3}\d+(:\d+)?'                                                                                  | IPv4 addresses (optional: with port).                                  |
@@ -14,13 +19,23 @@
 | size           | r'\b\d+\.?\d*\s?([KGTMkgtm]?(B\|b)\|([KGTMkgtm]))\b'                                                          | Memory sizes.                                                          |
 | duration       | r'\<?\d+\s?sec'                                                                                               | Time duration.                                                         |
 | block          | r'blk\_\-?\d+'                                                                                                | (System specific) Block identifier.                                    |
-| numerical      | r'\b(\-?\+?\d+\.?\d*)\b\|\b0[Xx][a-fA-F\d]+\b\|\b[a-fA-F\d]{4,}\b'                                            | Numerical values: integers, floats, or hexidecimal.                    |
 | time           | r'\b\d{2}:\d{2}(:\d{2}\|:\d{2},\d+)?\b'                                                                       | Time information.                                                      |
 | date           | r'\b(\d{4}-\d{2}-\d{2})\|\d{4}/\d{2}/\d{2}\b'                                                                 | Date information.                                                      |
+| numerical      | r'\b(\-?\+?\d+\.?\d*)\b\|\b0[Xx][a-fA-F\d]+\b\|\b[a-fA-F\d]{4,}\b'                                            | Numerical values: integers, floats, or hexidecimal.                    |
 | url            | r'\bhttps?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(:[0-9]{1,5})?(\/[^\s]*)?\b'                             | URL.                                                                   |
 | weekday_months | r'\b(%s)\b' % '\|'.join(weekday_abb+weekday+month_abb+months)                                                 | Weekdays or months (full names or abbreviations).                      |
 
+### Well Organized Orders
+The variable identification in preprocessing is done in a sequence: a token will be converted into a placeholder once it has been identified as a variable. Therefore, a poorly organized identification order may cause problems in parsing and lead to parsing accuracy decrement. For example, if time variables are detected before MAC addresses, then a MAC address "00:00:00:12:34:56" will be replaced as "<\*>:<\*>" instead of the correct form "<\*>." Therefore, we carefully organized the detection sequence as:
+```
+'url', 'IPv4_port', 'host_port', 'package_host', 'IPv6', 'Mac_address', 'time', 'path', 'block', 'date', 'duration', 'size', 'numerical', 'weekday_months'
+```
 
+### Customizable Masks
+Our framework allows users to customize the masks for variables. For example, an IPv4 address with port can be masked as either the finegrained "<\*>:<\*>" or the standard form "<\*>". The framework leverages "<\*>" for default parsing, but customizable masks can be managed using the ```regex_map``` dictionary and enabled in parsers.
+
+### Easy Knowledge Management
+Have some domain specific regexes in your mind? Add it to the regex set! Update the ```regex_match``` dictionary and ```sequence``` list to preprocess your log.
 
 ## Know Your Targets (the variables)
 
