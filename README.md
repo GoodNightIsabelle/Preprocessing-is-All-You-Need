@@ -4,15 +4,15 @@
 ## Introduction
 The overview of our study is shown in the following graph:
 
-**Variable Extraction:**
+**Variable Extraction:** Extract the variables in Loghub-2k using the log messages and their corresponding templates. 
 
-**Regular Expression Matching:**
+**Regular Expression Matching:** We parse the log messages only with the preprocessing regexes provided in Loghub and evaluate what portion of variables can be matched by the regexes.
 
-**Non-matchable Variable Categorization:**
+**Non-matchable Variable Categorization:** We collect the variables that failed to be matched by the regexes and categorize them with their semantics. 
 
-**Preprocessing Framework Development:**
+**Preprocessing Framework Development:** Based on the characteristics of the non-matchable variables, we refine the existing regex set and develop a new preprocessing framework.
 
-**Performance Comparison:**
+**Performance Comparison:** We combine the framework with four state-of-the-art statistic-based log parsers and evaluate the performance (GA, PA, FGA, and FTA) before and after deploying the new framework. 
 
 ## Know Your Targets (the variables)
 
@@ -20,7 +20,7 @@ The overview of our study is shown in the following graph:
 We used the smaller-scale dataset ``Loghub-2k`` for variable extraction and categorization; the framework is developed based on the findings in this dataset. To replicate the log parsing process and test the generalizability of our findings, we used the ``Loghub 2.0`` dataset for framework impact evaluation. The two datasets contain labeled log messages from 14 different systems. Both 2k and the full 2.0 version log data, along with their detailed introductions, can be found at https://github.com/logpai/loghub-2.0.
 
 ## Parsing Tools
-Our work focuses on improving the performance of statistic-based parsers with **manageable, interpretable, and generalizable** knowledge provided in the preprocessing stage. According to the Loghub 2.0 results, only four statistic-based log parsers (i.e., Drain, IPLoM, LFA, and LogCluster) can parse all the full-sized log files in 12 hours. Considering the applicability of these four tools in real-life usage, we only evaluated them in our study. 
+Our work focuses on improving the performance of statistic-based parsers with **manageable, interpretable, and generalizable** knowledge provided in the preprocessing stage. According to the Loghub 2.0 results, only four statistic-based log parsers (i.e., Drain, IPLoM, LFA, and LogCluster) can parse all the full-sized log files in 12 hours. Considering the applicability of these four tools in real-life usage, we only evaluated them in our study. The implementation codes are inherited from the Loghub 2.0 repository. 
 
 ## Replicate the Results
 Result replication is made easy! 
