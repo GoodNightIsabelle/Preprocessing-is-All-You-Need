@@ -4,4 +4,4 @@ This is the source code of our benchmark.
 
 `logparsers/` contains the implementation of all statistic-based log parsers.
 
-`old_benchmark/` contains some old code of previous benchamrking.
+`old_benchmark/` contains some old code of previous benchmarking.
