@@ -58,7 +58,7 @@ cd benchmark/
 ./run_all_full.sh
 ```
 
-To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools in both **our version and the original version**. An example of the graphical report:
+To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools in both **our version and the original version**. The results of the original version should be stored in the ``original_results'' folder. An example of the graphical report:
 
 ![image](./plots/comparison_full.png?raw=true)
 
