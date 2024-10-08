@@ -65,7 +65,7 @@ def preprocess(log, use_keys=False, estimation_stage=False, use_sequence=sequenc
                     matched_types.append(key)
                     log = new_log
         # Eliminate repetitive <*>s
-        # new_log = re.sub(r'(\<\*\>\s?)+\<\*\>', '<*>', new_log)
+        new_log = re.sub(r'(\<\*\>\s?)+\<\*\>', '<*>', new_log)
         return new_log, sequence, matched_types
     else:
         if use_keys:
@@ -77,7 +77,7 @@ def preprocess(log, use_keys=False, estimation_stage=False, use_sequence=sequenc
             for key in use_sequence:
                 new_log = re.sub(regex_match[key], '<*>', new_log)
         # Eliminate repetitive <*>s
-        # new_log = re.sub(r'(\<\*\>\s?)+\<\*\>', '<*>', new_log)
+        new_log = re.sub(r'(\<\*\>\s?)+\<\*\>', '<*>', new_log)
         return new_log
         
 
