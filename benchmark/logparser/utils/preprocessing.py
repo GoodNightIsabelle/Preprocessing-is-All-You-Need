@@ -17,7 +17,7 @@ regex_match = {
     'IPv6': r'(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}|:)|(([0-9a-fA-F]{1,4}:){1,7}|:):((:[0-9a-fA-F]{1,4}){1,7}|:))',
     'path': r'(/|)(([\w.-]+|\<\*\>)/)+([\w.-]+|\<\*\>)',
     'size': r'\b\d+\.?\d*\s?([KGTMkgtm]?(B|b)|([KGTMkgtm]))\b',
-    'duration': r'\<?\d+\s?sec',
+    'duration': r'\b\<?\d+\s?(sec|s|ms)\b',
     'block': r'blk\_\-?\d+',
     'numerical': r'\b(\-?\+?\d+\.?\d*)\b|\b0[Xx][a-fA-F\d]+\b|\b[a-fA-F\d]{4,}\b',
     'time': r'\b\d{2}:\d{2}(:\d{2}|:\d{2},\d+)?\b',
