@@ -17,7 +17,7 @@ Our study identified several categories of variables that are not matched by the
 | IPv6           | r'(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}\|:)\|(([0-9a-fA-F]{1,4}:){1,7}\|:):((:[0-9a-fA-F]{1,4}){1,7}\|:))' | IPv6 addresses.                                                        |
 | path           | r'(/\|)(([\w.-]+\|\<\*\>)/)+([\w.-]+\|\<\*\>)'                                                                | File paths.                                                            |
 | size           | r'\b\d+\.?\d*\s?([KGTMkgtm]?(B\|b)\|([KGTMkgtm]))\b'                                                          | Memory sizes.                                                          |
-| duration       | r'\<?\d+\s?sec'                                                                                               | Time duration.                                                         |
+| duration       | r'\b\<?\d+\s?(sec|s|ms)\b'                                                                                               | Time duration.                                                         |
 | block          | r'blk\_\-?\d+'                                                                                                | (System specific) Block identifier.                                    |
 | time           | r'\b\d{2}:\d{2}(:\d{2}\|:\d{2},\d+)?\b'                                                                       | Time information.                                                      |
 | date           | r'\b(\d{4}-\d{2}-\d{2})\|\d{4}/\d{2}/\d{2}\b'                                                                 | Date information.                                                      |
