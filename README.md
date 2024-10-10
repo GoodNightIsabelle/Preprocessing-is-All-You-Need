@@ -41,7 +41,7 @@ Have some domain specific regexes in your mind? Add it to the regex set! Update 
 Loghub provides various regexes for log preprocessing. These regexes were selected based on the domain knowledge for each system. We summarized the regexes and de-duplicated them as follows: 
 ![image](./plots/default-regex.png?raw=true)
 
-According to RQ1, we found that using all these default regexes is insufficient for variable detection in the preprocessing stage. Hence, we carried out a study on the non-matchable variables from Loghub-2k and manually categorized them. The two authors independently labeled a small subset and discussed the category range. Leveraging the range, the two authors then labeled the remaining variables independently and discussed the final labels. The variable types and their ratios are shown here:
+According to RQ1, we found that using all these default regexes is insufficient for variable detection in the preprocessing stage. Hence, we carried out a study on the non-matchable variables from Loghub-2k and manually categorized them. The two authors independently labeled a small subset and discussed the category range. Leveraging the range, the two authors then labeled the remaining variables independently and discussed the final labels. The labeled variables can be checked at ``not_matched_variables.csv``. A summary of the variable types and their ratios is available here:
 
 ![image](./plots/non-matchable.png?raw=true)
 
@@ -110,5 +110,6 @@ Run ``plotting_frequency.py`` to get the graphical report (results from the orig
 ├── original_result (experimental results of the original parsers)
 ├── result (experimental results of the parsers with our preprocessing framework)
 ├── README.md
+├── not_matched_variables.csv
 └── requirements.txt
 ```
