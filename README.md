@@ -17,7 +17,7 @@ Our study identified several categories of variables that are not matched by the
 | IPv6           | r'(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}\|:)\|(([0-9a-fA-F]{1,4}:){1,7}\|:):((:[0-9a-fA-F]{1,4}){1,7}\|:))' | IPv6 addresses.                                                        |
 | path           | r'(/\|)(([\w.-]+\|\<\*\>)/)+([\w.-]+\|\<\*\>)'                                                                | File paths.                                                            |
 | size           | r'\b\d+\.?\d*\s?([KGTMkgtm]?(B\|b)\|([KGTMkgtm]))\b'                                                          | Memory sizes.                                                          |
-| duration       | r'\b\<?\d+\s?(sec|s|ms)\b'                                                                                               | Time duration.                                                         |
+| duration       | r'\b\<?\d+\s?(sec\|s\|ms)\b'                                                                                    | Time duration.                                                         |
 | block          | r'blk\_\-?\d+'                                                                                                | (System specific) Block identifier.                                    |
 | time           | r'\b\d{2}:\d{2}(:\d{2}\|:\d{2},\d+)?\b'                                                                       | Time information.                                                      |
 | date           | r'\b(\d{4}-\d{2}-\d{2})\|\d{4}/\d{2}/\d{2}\b'                                                                 | Date information.                                                      |
@@ -38,6 +38,14 @@ Our framework allows users to customize the masks for variables. For example, an
 Have some domain specific regexes in your mind? Add it to the regex set! Update the ```regex_match``` dictionary and ```sequence``` list to preprocess your log.
 
 ## Know Your Targets (the variables)
+Loghub provides various regexes for log preprocessing. These regexes were selected based on the domain knowledge for each system. We summarized the regexes and de-duplicated them as follows: 
+![image](./plots/default-regex.png?raw=true)
+
+According to RQ1, we found that using all these default regexes is insufficient for variable detection in the preprocessing stage. Hence, we carried out a study on the non-matchable variables from Loghub-2k and manually categorized them. The two authors independently labeled a small subset and discussed the category range. Leveraging the range, the two authors then labeled the remaining variables independently and discussed the final labels. The variable types and their ratios are shown here:
+
+![image](./plots/non-matchable.png?raw=true)
+
+Our framework aims to reduce the not-matching number of generalizable (i.e., not customized or system-specific) variables (e.g., IPv6 addresses).
 
 ## Dataset
 We used the smaller-scale dataset ``Loghub-2k`` for variable extraction and categorization; the framework is developed based on the findings in this dataset. To replicate the log parsing process and test the generalizability of our findings, we used the ``Loghub 2.0`` dataset for framework impact evaluation. The two datasets contain labeled log messages from 14 different systems. Both 2k and the full 2.0 version log data, along with their detailed introductions, can be found at https://github.com/logpai/loghub-2.0.
@@ -85,3 +93,22 @@ cd benchmark/
 Run ``plotting_frequency.py`` to get the graphical report (results from the original version of the parsers are required):
 
 ![image](./plots/frequency_full_all.png?raw=true)
+
+
+## Folder Structure
+```
+├── benchmark  
+    ├── evaluation
+    ├── logparser
+    ├── old_benchmark
+    ├── run_all_full.sh
+    ├── run_complexity_full.sh
+    ├── run_frequency_full.sh
+    └── README.md
+├── full_dataset (Please download the data from Loghub 2.0 and store them here)
+├── plots (result visualiziation)                     
+├── original_result (experimental results of the original parsers)
+├── result (experimental results of the parsers with our preprocessing framework)
+├── README.md
+└── requirements.txt
+```
