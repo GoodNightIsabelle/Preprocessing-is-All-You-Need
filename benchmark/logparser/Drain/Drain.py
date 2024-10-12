@@ -269,7 +269,7 @@ class LogParser:
             else:
                 if idx == 2000:
                     matched_types = set(matched_types)
-                    print(matched_types)
+                    # print(matched_types)
                     use_sequence = [i for i in use_sequence if i in matched_types]
                 logmessageL = preprocess(line['Content'], estimation_stage=False, use_sequence=use_sequence).strip().split()
             # logmessageL = filter(lambda x: x != '', re.split('[\s=:,]', preprocess(line['Content'])))
