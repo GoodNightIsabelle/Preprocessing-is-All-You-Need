@@ -66,7 +66,7 @@ cd benchmark/
 ./run_all_full.sh
 ```
 
-To obtain a graphical report, run ``plotting_full.py`` after successfully parsing all the files with all the tools in both **our version and the original version**. The results of the original version should be stored in the ``original_results'' folder. An example of the graphical report:
+We illustrate the evaluation results of the four statistic-based parsers in the following box plot. The blue boxes indicate the parsers with the original preprocessing function, while the yellow boxes show the results of parsers with the new preprocessing framework. The red lines show the medians and the green arrows indicate the means.
 
 ![image](./plots/comparison_full.png?raw=true)
 
@@ -78,7 +78,7 @@ cd benchmark/
 ./run_complexity_full.sh
 ```
 
-Run ``plotting_complexity.py`` to get the graphical report (results from the original version of the parsers are required):
+The following plot visualizes the average evaluation results of log parsers on logs with different numbers of variables. The red dot lines illustrate the original results obtained with the previous preprocessing function.
 
 ![image](./plots/complexity_full_all.png?raw=true)
 
@@ -90,7 +90,7 @@ cd benchmark/
 ./run_frequency_full.sh
 ```
 
-Run ``plotting_frequency.py`` to get the graphical report (results from the original version of the parsers are required):
+The following plot visualizes the average evaluation results of log parsers on logs with different frequencies (i.e., the most frequent 10% and the least frequent 10%.) The red dot lines illustrate the original results obtained with the previous preprocessing function.
 
 ![image](./plots/frequency_full_all.png?raw=true)
 
