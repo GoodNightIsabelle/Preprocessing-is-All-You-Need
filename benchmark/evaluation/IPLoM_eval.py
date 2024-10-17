@@ -57,7 +57,6 @@ datasets_full = [
     "BGL",
     "HDFS",
 ]
-datasets_full = ['Thunderbird']
 if __name__ == "__main__":
 
     args = common_args()
